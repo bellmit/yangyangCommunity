@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>yangyang社区-登陆</title>
+    <style type="text/css">
+        a {
+            text-decoration: none;
+        }
+
+        #backcolor {
+            width: 100%;
+            height: 720px;
+            background-image: url(/../static/images/a43c23690a91d1b7.jpg);
+            background-size: cover;
+        }
+
+        #again {
+            position: absolute;
+            right: 240px;
+            top: 160px;
+            width: 370px;
+            height: 400px;
+            background-color: #fff;
+        }
+
+        .icon-user {
+            position: absolute;
+            left: 20px;
+            z-index: 5;
+            background-image: url(/../static/images/QQ图片20180917160519.png);
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            width: 40px;
+            height: 36px;
+            background-size: cover;
+        }
+
+        .icon-pwd {
+            position: absolute;
+            left: 20px;
+            z-index: 5;
+            background-image: url(../static/images/QQ图片20180917160519.png);
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            width: 40px;
+            height: 36px;
+            background-size: cover;
+        }
+
+        #again #txt {
+            margin: 40px 20px 0px;
+            font-size: 18px;
+            width: 100px;
+            height: 30px;
+        }
+
+        #again #username {
+            margin: 25px 20px 0px;
+            overflow: hidden;
+        }
+
+            #again #username #name {
+                width: 256px;
+                height: 30px;
+                font-size: 15px;
+                line-height: 30px;
+                padding-left: 40px;
+            }
+
+        #again #userpwd {
+            margin: 25px 20px 0px;
+            overflow: hidden;
+        }
+
+            #again #userpwd #pwd {
+                width: 256px;
+                height: 30px;
+                font-size: 15px;
+                line-height: 30px;
+                padding-left: 40px;
+            }
+
+        #again #deng {
+            margin: 25px 20px 0px;
+            overflow: hidden;
+        }
+
+            #again #deng #btn {
+                width: 300px;
+                height: 40px;
+                background-color: #f00;
+                color: #fff;
+                text-align: center;
+                font-size: 18px;
+                line-height: 40px;
+                letter-spacing: 5px;
+                border: none;
+            }
+
+        #txt1 {
+            margin: 25px 20px 0px;
+            width: 300px;
+            height: 40px;
+            text-align: right;
+            font-size: 13px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn").click(function () {
+                var name=$("#name").val();
+                var pwd=$("#pwd").val();
+                alert(name);
+                alert(pwd);
+                // if ($("#name").val() == "" || $("#pwd").val() == "") {
+                //     alert("账号或者密码不能为空");
+                // }
+                // else {
+                //
+                // }
+            })
+
+        })
+    </script>
+</head>
+<body>
+
+    <div id="backcolor">
+        <div id="again">
+            <div id="txt">
+                <strong>密码登陆</strong>
+            </div>
+            <div id="username">
+                <i class="icon-user"></i>
+                <input type="text" id="name" />
+            </div>
+            <div id="userpwd">
+                <i class="icon-pwd"></i>
+                <input type="password" id="pwd" />
+            </div>
+            <div id="deng">
+                <input type="button" value="登陆" id="btn" />
+            </div>
+            <div id="txt1">
+                <a href="#">忘记密码</a>&nbsp&nbsp<a href="#">忘记用户名</a>&nbsp&nbsp<a href="#">免费注册</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="/js/jquery.min.js" type="application/javascript"></script>
+<script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</html>
