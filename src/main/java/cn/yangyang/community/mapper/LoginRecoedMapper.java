@@ -11,5 +11,5 @@ public interface LoginRecoedMapper {
 
     //添加语句
     @Insert("insert into loginrecoed values(null,#{user_ID},#{Recoed_Datetime})")
-    int insert(LoginRecoed recoed);
+    Integer insert(LoginRecoed recoed);
 }

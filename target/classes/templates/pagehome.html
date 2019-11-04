@@ -11,7 +11,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">yangyang社区</a>
+            <a class="navbar-brand" href="/">yangyang社区</a>
         </div>
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -21,6 +21,7 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li th:if="${session.user==null}"><a href="/JudgementAccount">登陆</a></li>
+            <li th:if="${session.user!=null}"><a href="/publish">发布</a></li>
             <li class="dropdown" th:if="${session.user!=null}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span th:text="${session.user.getUser_NickName()}"></span>

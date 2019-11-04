@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Controller
-public class usercontroller {
+public class UserController {
 
     @Autowired
     private RedisTemplate redisTemplate;
