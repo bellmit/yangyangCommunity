@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -54,18 +53,18 @@ public class PublishController {
             publish.setPublish_Desc(desc);
             publish.setTag(tag);
             Date date = new Date();
-            SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            System.out.println(dateFormat.format(date));
             publish.setPublish_Datetime(dateFormat.format(date));
             User user = (User) request.getSession().getAttribute("user");
             publish.setUser_ID(user.getUser_ID());
             publishMapper.insert(publish);
         }
         catch (Exception e){
-            model.addAttribute("error","发布失败！");
+            model.addAttribute("error","发布失败！请看右侧提示！");
             e.printStackTrace();
             return "publish";
         }
-
         return "redirect:/";
     }
 }

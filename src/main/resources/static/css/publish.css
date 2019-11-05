@@ -1,12 +1,18 @@
-body {
+/*navbar*/
+.navbar .container-fluid{
+    margin-left: 2%;
+    margin-right: 5%;
+}
+/*body*/
+body{
     background-color: #efefef;
 }
+
 .publish-content{
     background-color: white;
-    width: 90%;
     margin-top: 50px;
 }
-.publish-content .btn-success{
+.btn-success{
     margin-top: 20px;
     margin-bottom: 30px;
     margin-right: 50px;

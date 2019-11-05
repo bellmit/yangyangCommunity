@@ -8,34 +8,70 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">yangyang社区</a>
-        </div>
-        <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="输入问题" />
+<div th:insert="navbar::navbar"></div>
+<!--中间内容-->
+<div class="container pagehome-content">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicong glyphicon-plus" aria-hidden="true"></span>发起</h2>
+            <hr>
+            <div class="media" th:each="publishData:${datas.publishData}" h>
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object img-rounded"
+                             src="https://b-ssl.duitang.com/uploads/item/201203/31/20120331135810_kMBdG.jpeg">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <strong><a th:text="${publishData.getPublish_Title()}"></a></strong>
+                    </h4>
+                    <span class="text-desc">
+                        • <span th:text="${publishData.getUser().getUser_NickName()}"></span> 发起了问题&nbsp
+                        • <span th:text="${publishData.getLike_Count()}"></span> 个点赞&nbsp
+                        • <span th:text="${publishData.getComment_Count()}"></span> 个评论&nbsp
+                        • <span th:text="${publishData.getRead_Count()}"></span> 次浏览&nbsp
+                        • <span th:text="${publishData.getPublish_Datetime()}"></span>
+                    </span>
+                </div>
+                <hr>
             </div>
-            <button type="submit" class="btn btn-default">搜索</button>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-            <li th:if="${session.user==null}"><a href="/JudgementAccount">登陆</a></li>
-            <li th:if="${session.user!=null}"><a href="/publish">发布</a></li>
-            <li class="dropdown" th:if="${session.user!=null}">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span th:text="${session.user.getUser_NickName()}"></span>
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">消息中心</a></li>
-                    <li><a href="#">个人资料</a></li>
-                    <li><a href="#">退出登陆</a></li>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li th:if="${datas.isShowFristPage()}">
+                        <a th:href="@{/}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;&laquo;</span>
+                        </a>
+                    </li>
+                    <li th:if="${datas.isShowPrevious()}">
+                        <a th:href="@{/(page=${(datas.page)-1})}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <li th:class="${datas.page==page}?'active':''" th:each="page:${datas.pagelist}">
+                        <a th:href="@{/(page=${page})}" th:text="${page}"></a>
+                    </li>
+
+                    <li th:if="${datas.isShowNext()}">
+                        <a th:href="@{/(page=${datas.page+1})}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li th:if="${datas.isShowEndPage()}">
+                        <a th:href="@{/(page=${datas.totalCount})}" aria-label="Previous">
+                            <span aria-hidden="true">&raquo;&raquo;</span>
+                        </a>
+                    </li>
                 </ul>
-            </li>
-        </ul>
+            </nav>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <br/><br/>
+            <h4>右侧区域</h4>
+        </div>
     </div>
-</nav>
+</div>
 </body>
 <script src="/js/jquery.min.js" type="application/javascript"></script>
 <script src="/js/bootstrap.min.js" type="application/javascript"></script>

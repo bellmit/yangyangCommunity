@@ -12,13 +12,3 @@ body{
     background-color: white;
     margin-top: 50px;
 }
-.btn-success{
-    margin-top: 20px;
-    margin-bottom: 30px;
-    margin-right: 50px;
-    float: right;
-}
-.publish-content .btn-warning{
-    margin-top: 20px;
-    width: 30%;
-}

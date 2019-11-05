@@ -60,6 +60,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+        <!--Lombok  减少get set方法-->
+        <!--<dependency>-->
+        <!--    <groupId>org.projectlombok</groupId>-->
+        <!--    <artifactId>lombok</artifactId>-->
+        <!--    <version>1.18.10</version>-->
+        <!--    <scope>provided</scope>-->
+        <!--</dependency>-->
     </dependencies>
     <!--jar包生成功能-->
     <build>

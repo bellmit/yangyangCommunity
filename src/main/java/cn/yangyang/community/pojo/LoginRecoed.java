@@ -1,5 +1,6 @@
 package cn.yangyang.community.pojo;
 
+
 public class LoginRecoed {
     private Integer Recoed_ID;
     private Integer user_ID;
@@ -20,7 +21,6 @@ public class LoginRecoed {
     public void setUser_ID(Integer user_ID) {
         this.user_ID = user_ID;
     }
-
 
     public String getRecoed_Datetime() {
         return Recoed_Datetime;
