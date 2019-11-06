@@ -23,7 +23,9 @@ public class PublishController {
     private PublishMapper publishMapper;
 
     @GetMapping("/publish")
-    public String publish() {
+    public String publish(Model model) {
+        model.addAttribute("showlogin",false);
+        model.addAttribute("showpublish",false);
         return "publish";
     }
 
@@ -32,6 +34,8 @@ public class PublishController {
                                 @RequestParam(value = "desc") String desc,
                                 @RequestParam(value = "tag") String tag,
                                 HttpServletRequest request, Model model){
+        model.addAttribute("showlogin",false);
+        model.addAttribute("showpublish",false);
         model.addAttribute("title",title);
         model.addAttribute("desc",desc);
         model.addAttribute("tag",tag);
@@ -54,7 +58,6 @@ public class PublishController {
             publish.setTag(tag);
             Date date = new Date();
             SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            System.out.println(dateFormat.format(date));
             publish.setPublish_Datetime(dateFormat.format(date));
             User user = (User) request.getSession().getAttribute("user");
             publish.setUser_ID(user.getUser_ID());

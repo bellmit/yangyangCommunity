@@ -8,7 +8,11 @@ body{
     background-color: #efefef;
 }
 
-.publish-content{
+.core-content{
     background-color: white;
     margin-top: 50px;
+    height: 1250px;
+}
+.pagination{
+    float: right;
 }

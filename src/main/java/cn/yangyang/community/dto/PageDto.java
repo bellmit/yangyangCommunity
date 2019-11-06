@@ -20,6 +20,7 @@ public class PageDto {
 
     public void Method(Integer count,Integer page,Integer pagesize){
         Integer totalCount=(int)Math.ceil(count*1.0/pagesize);
+        if (totalCount==0) totalCount=1;
         this.totalCount=totalCount;
         this.page=page;
         //是否展示上一页和下一页

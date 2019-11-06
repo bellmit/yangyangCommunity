@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>yangyang社区</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pagehome.css">
+    <style>
+        .register{
+            width: 20%;
+        }
+    </style>
+
+</head>
+<body>
+<div th:insert="navbar::navbar"></div>
+
+<form class="register center-block">
+    <div class="form-group">
+        <label for="NickName">昵称：</label>
+        <input type="text" name="NickName" th:value="${NickName}" class="form-control" id="NickName" placeholder="NickName">
+    </div>
+    <div class="form-group">
+        <label for="Age">年龄：</label>
+        <input type="text" name="age" th:value="${age}" class="form-control" id="Age" placeholder="Age">
+    </div>
+    <div class="form-group">
+        <label for="Age">性别：</label>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 男
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPhone">手机号：</label>
+        <input type="text" name="phone" th:value="${phone}" class="form-control" id="exampleInputPhone" placeholder="Phone">
+        <button type="submit" class="btn btn-default" formaction="{:url('/GetVerificationCode')}">获取验证码</button>
+    </div>
+    <div class="form-group">
+        <label for="VerificationCode">验证码：</label>
+        <input type="text" name="VerificationCode" th:value="${VerificationCode}" class="form-control" id="VerificationCode" placeholder="验证码">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">密码：</label>
+        <input type="password" name="password" th:value="${password}" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="Adress">地址：</label>
+        <input type="text" name="adress" th:value="${adress}" class="form-control" id="Adress" placeholder="Adress">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">头像</label>
+        <input type="file" id="exampleInputFile">
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> Check me out
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default">注册</button>
+</form>
+</body>
+</html>

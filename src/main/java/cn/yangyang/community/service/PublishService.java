@@ -8,6 +8,7 @@ import cn.yangyang.community.pojo.Publish;
 import cn.yangyang.community.pojo.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.beans.BulkBean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -40,6 +41,24 @@ public class PublishService {
         }
         pageDto.setPublishData(publishDtoList);
         pageDto.Method(publishMapper.Count(),page,pagesize);
+        return pageDto;
+    }
+
+    public PageDto list(Integer user_ID,Integer page, Integer pagesize){
+        PageDto pageDto=new PageDto();
+        Integer offsize=pagesize*(page-1);
+        List<Publish> publishList = publishMapper.SelectByUserID(user_ID,offsize,pagesize);
+        List<PublishDto> publishDtoList=new ArrayList<>();
+        for (Publish publish : publishList) {
+            User user = userMapper.FindByUser(publish.getUser_ID());
+            PublishDto dto=new PublishDto();
+            //快速赋值
+            BeanUtils.copyProperties(publish,dto);
+            dto.setUser(user);
+            publishDtoList.add(dto);
+        }
+        pageDto.setPublishData(publishDtoList);
+        pageDto.Method(publishMapper.CountByUserID(user_ID),page,pagesize);
         return pageDto;
     }
 }

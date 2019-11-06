@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>yangyang社区-登陆</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <style>
+        body{
+            background-color: #efefef;
+        }
+        .content{
+            background-color: white;
+            height: 350px;
+            width: 450px;
+            margin:150px auto 0px;
+        }
+        .tt{
+            margin: auto;
+            padding-top: 20px;
+            width: 250px;
+        }
+        .center-block{
+            width: 150px;
+        }
+        h4{
+            margin-left: 20px;
+            padding-top: 20px;
+        }
+        .txt{
+            float: right;
+            margin-top: 30px;
+            margin-right: 30px;
+            color: #2e6da4;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="navbar::navbar"></div>
+<div class="content">
+    <h4>密码登陆</h4>
+    <div class="tt">
+        <div class="center-block" th:if="${error!=null}">
+            <button class="btn btn-warning center-block" th:text="${error}"></button>
+        </div>
+        <br />
+        <form action="/JudgementAccount" method="post">
+            <div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">
+							<span class="glyphicon glyphicon-user"></span>
+						</span>
+                <input type="text" name="username" th:value="${username}" class="form-control" placeholder="请输入你的账号" aria-describedby="basic-addon1">
+            </div>
+            <br />
+            <div class="input-group">
+						<span class="input-group-addon" id="basic-addon2">
+							<span class="glyphicon glyphicon-eye-close"></span>
+						</span>
+                <input type="password" name="password" th:value="${password}" class="form-control" placeholder="请输入你的密码" aria-describedby="basic-addon1">
+            </div>
+            <br /><br />
+            <input class="btn btn-danger center-block" type="submit" value="登陆">
+        </form>
+    </div>
+    <div class="txt">
+        <a href="#">忘记密码</a>
+        <a href="/register">用户注册</a>
+    </div>
+</div>
+</body>
+<script src="/js/jquery.min.js" type="application/javascript"></script>
+<script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</html>

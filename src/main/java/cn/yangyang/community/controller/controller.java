@@ -28,26 +28,28 @@ public class controller {
     @GetMapping("/")
     public String pagehome(@RequestParam(value = "page", defaultValue = "1") Integer page,
                            @RequestParam(value = "pagesize", defaultValue = "10") Integer pagesize,
-                           HttpServletRequest request, Model model) {
+                           HttpServletRequest request,Model model) {
         HttpSession session = request.getSession();
-        if (session.getAttribute("user") == null) {
-            Cookie[] cookies = request.getCookies();
-            if (null != cookies && cookies.length != 0) {
-                for (Cookie cookie : cookies) {
-                    if (cookie.getName().equals("token")) {
-                        String token = cookie.getValue();
-                        if (redisTemplate.hasKey(token)) {
-                            //json字符串转对象
-                            User user = JSON.parseObject(redisTemplate.opsForValue().get(token).toString(), User.class);
-                            if (null != user) session.setAttribute("user", user);
+        Cookie[] cookies = request.getCookies();
+        if (null != cookies && cookies.length != 0) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    String token = cookie.getValue();
+                    if (redisTemplate.hasKey(token)) {
+                        //json字符串转对象
+                        User user = JSON.parseObject(redisTemplate.opsForValue().get(token).toString(), User.class);
+                        if (null != user) {
+                            session.setAttribute("user", user);
                         }
-                        break;
                     }
+                    break;
                 }
             }
         }
         PageDto pageDto = publishService.list(page, pagesize);
         model.addAttribute("datas", pageDto);
+        model.addAttribute("showlogin",true);
+        model.addAttribute("showpublish",true);
         return "pagehome";
     }
 
